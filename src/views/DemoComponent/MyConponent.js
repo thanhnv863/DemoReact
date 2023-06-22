@@ -1,41 +1,52 @@
 import React from "react";
 
 class MyComponent extends React.Component {
+  // JSX => return block
   state = {
-    name: "Thành",
-    nameLove: "Nhung",
+    firstName: "",
+    lastName: "",
   };
-
-  handleOnChangeName = (event) => {
+  handleChangeFirstName = (event) => {
     this.setState({
-      name: event.target.value,
-      // nameLove: "Tạ Thị Hồng Nhung",
+      firstName: event.target.value,
+      // lastName: event.target.value,
+    });
+  };
+  handleChangeLastName = (event) => {
+    this.setState({
+      lastName: event.target.value,
     });
   };
 
-  handleClickButton = () => {
-    console.log("Thanhnvph20218");
-    alert("Yêu Tạ Thị Hồng Nhung");
+  handleSubmit = (event) => {
+    //ngăn chặn submit
+    event.preventDefault();
+    // alert("click me");
+    console.log("==> check data input:", this.state);
   };
-
   render() {
-    console.log("==> call render:", this.state);
+    console.log("call re render:", this.state);
     return (
       <>
-        <div className="Thanh">
+        <form>
+          <label htmlFor="fname">First name:</label>
+          <br></br>
           <input
-            value={this.state.name}
             type="text"
-            onChange={(event) => this.handleOnChangeName(event)}
+            value={this.state.firstName}
+            onChange={(event) => this.handleChangeFirstName(event)}
           />
-          Xin Chào Anh {this.state.name} Hihi
-        </div>
-        <div className="Nhung">
-          {this.state.name} love {this.state["nameLove"]}
-        </div>
-        <div className="button">
-          <button onClick={() => this.handleClickButton()}> Click me</button>
-        </div>
+          <br></br>
+          <label htmlFor="lname">Last name:</label>
+          <br></br>
+          <input
+            type="text"
+            value={this.state.lastName}
+            onChange={(event) => this.handleChangeLastName(event)}
+          />
+          <br></br>
+          <input type="submit" onClick={(event) => this.handleSubmit(event)} />
+        </form>
       </>
     );
   }
