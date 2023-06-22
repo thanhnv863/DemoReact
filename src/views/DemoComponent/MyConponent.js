@@ -5,10 +5,22 @@ class MyComponent extends React.Component {
     name: "Thành",
     nameLove: "Nhung",
   };
+  handleOnChangeName = (event) => {
+    this.setState({
+      name: event.target.value,
+    });
+  };
   render() {
     return (
       <>
-        <div className="Thanh">Xin Chào Anh {this.state.name} Hihi</div>
+        <div className="Thanh">
+          <input
+            value={this.state.name}
+            type="text"
+            onChange={(event) => this.handleOnChangeName(event)}
+          />
+          Xin Chào Anh {this.state.name} Hihi
+        </div>
         <div className="Nhung">
           {this.state.name} love {this.state["nameLove"]}
         </div>
