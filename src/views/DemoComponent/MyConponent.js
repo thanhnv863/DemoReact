@@ -5,12 +5,21 @@ class MyComponent extends React.Component {
     name: "Thành",
     nameLove: "Nhung",
   };
+
   handleOnChangeName = (event) => {
     this.setState({
       name: event.target.value,
+      // nameLove: "Tạ Thị Hồng Nhung",
     });
   };
+
+  handleClickButton = () => {
+    console.log("Thanhnvph20218");
+    alert("Yêu Tạ Thị Hồng Nhung");
+  };
+
   render() {
+    console.log("==> call render:", this.state);
     return (
       <>
         <div className="Thanh">
@@ -23,6 +32,9 @@ class MyComponent extends React.Component {
         </div>
         <div className="Nhung">
           {this.state.name} love {this.state["nameLove"]}
+        </div>
+        <div className="button">
+          <button onClick={() => this.handleClickButton()}> Click me</button>
         </div>
       </>
     );
